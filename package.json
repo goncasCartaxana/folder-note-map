@@ -1,6 +1,6 @@
 {
   "name": "folder-note-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Obsidian plugin: generate a static canvas that maps the vault using folder notes.",
   "main": "main.js",
   "scripts": {
