@@ -1,0 +1,26 @@
+{
+  "name": "folder-note-map",
+  "version": "1.0.0",
+  "description": "Obsidian plugin: generate a static canvas that maps the vault using folder notes.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "canvas",
+    "folder-notes"
+  ],
+  "author": "Gonçalo Mendonça Cartaxana",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "esbuild": "^0.21.5",
+    "obsidian": "latest",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5"
+  }
+}
