@@ -138,14 +138,24 @@ function isEligibleFile(ctx: Ctx, file: TFile): boolean {
 }
 
 function mapAs(ctx: Ctx, note: TFile): MapAs {
-	const key = ctx.s.propertyName.trim();
-	if (!key) return "group";
+    const key = ctx.s.propertyName.trim();
+    if (!key) return "group";
 
-	const raw: unknown = ctx.app.metadataCache.getFileCache(note)?.frontmatter?.[key];
-	const first = Array.isArray(raw) ? raw[0] : raw;
-	const value = typeof first === "string" ? first.trim().toLowerCase() : "";
+    const cache = ctx.app.metadataCache.getFileCache(note);
+    const frontmatter = cache?.frontmatter;
+    if (!frontmatter) return "group";
 
-	if (value === "note") return "note";
-	if (value === "hide") return "hide";
-	return "group";
+    const raw: unknown = frontmatter[key];
+
+    // Safely unwrap array or single value without lint complaints
+    let first: unknown = raw;
+    if (Array.isArray(raw) && raw.length > 0) {
+        first = raw[0];
+    }
+
+    const value = typeof first === "string" ? first.trim().toLowerCase() : "";
+
+    if (value === "note") return "note";
+    if (value === "hide") return "hide";
+    return "group";
 }
