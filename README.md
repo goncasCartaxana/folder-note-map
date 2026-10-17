@@ -103,7 +103,7 @@ Keep one generated map untouched as your baseline, and reorganize a copy of it: 
 **From the community plugin directory** (once approved): Settings → Community plugins → Browse → search for **Folder Note Map**.
 
 **Manually:**
-1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/YOUR-USERNAME/folder-note-map/releases/latest).
+1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/goncasCartaxana/folder-note-map/releases/latest).
 2. Put both in `<your vault>/.obsidian/plugins/folder-note-map/`.
 3. Enable **Folder Note Map** under Settings → Community plugins.
 
