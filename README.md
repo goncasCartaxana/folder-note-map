@@ -9,8 +9,7 @@ The cards are ordinary **canvas notes** (text cards). They live only inside the 
 Rename cards, drag them between groups, add edges and colors, or delete the whole map.
 One way to use it is to generate two folder note maps (if both are created in the same minute, due to non-destructive saving, it won't overwrite but add a numeric suffix), organize one and let the other one unchanged. This way one can follow the changes made afterwards.
 
-![Canvas Examples](<Folder-Note-Map-Canvas-Output-Example.png>)
-
+![Canvas Examples](images/Folder-Note-Map-Canvas-Output-Example.png)
 
 ## Usage
 Click the **map** icon in the ribbon, or run **Generate vault map canvas** from the command palette. The map is created and opened in a new tab.
