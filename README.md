@@ -14,8 +14,6 @@ One way to use it is to generate two folder note maps (if both are created in th
 ## Usage
 Click the **map** icon in the ribbon, or run **Generate vault map canvas** from the command palette. The map is created and opened in a new tab.
 
-
-
 ## What ends up on the map
 
 | In your vault | On the map |
@@ -33,18 +31,17 @@ For example:
 
 ```
 Areas/
-  Areas.md          <- folder note, so Areas is a group
-  health.md         <- card "health"
+  Areas.md <- folder note, so Areas is a group
+  health.md <- card "health"
   Archive/
-    Archive.md      <- has map-as: hide, so left off the map
-Projects/           <- no folder note, so its own files are skipped
+    Archive.md <- has map-as: hide, so left off the map
+Projects/ <- no folder note, so its own files are skipped
   Alpha/
-    Alpha.md        <- folder note, so Alpha is a group
-    notes.md        <- card "notes"
+    Alpha.md <- folder note, so Alpha is a group
+    notes.md <- card "notes"
 ```
 
 This produces an **Areas** group with one card, and an **Alpha** group with one card. By default the plugin looks inside `Projects` for folders that do have a folder note; you can change that in settings (`Folders without a folder note`).
-
 
 
 ### Showing a folder as a plain note
@@ -69,7 +66,7 @@ You choose the convention in settings:
 
 ### Tip: keep a "before" map
 Keep one generated map untouched as your baseline, and reorganize a copy of it: move cards between groups, rename them, merge or delete them. Would suggest marking changes so it can be followed. Restructure your vault, generate a fresh map, and compare it with the original to check your changes.
-- Create a copy either via `Make a copy of the current file` (prefered) or via our very own `Folder Note Map: Generate vault map canvas` plugin command.
+- Create a copy either via `Make a copy of the current file` (preferred) or via our very own `Folder Note Map: Generate vault map canvas` plugin command.
 
 
 ## Settings
@@ -107,13 +104,12 @@ Keep one generated map untouched as your baseline, and reorganize a copy of it: 
 2. Put both in `<your vault>/.obsidian/plugins/folder-note-map/`.
 3. Enable **Folder Note Map** under Settings → Community plugins.
 
-
 ## Development
 ```bash
 npm install      # Run to install required external packages
 npm run dev      # rebuild on every change
 npm run build    # type-check and produce a minified main.js
-```
+````
 - `src/vaultModel.ts` reads the vault and decides what appears on the map.
 - `src/layout.ts` positions everything and writes the canvas JSON. It has no Obsidian dependency.
 - `src/main.ts` and `src/settingsTab.ts` hold the plugin and its settings.
