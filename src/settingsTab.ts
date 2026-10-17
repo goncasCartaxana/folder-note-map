@@ -3,6 +3,8 @@ import type FolderNoteMapPlugin from "./main";
 import { CardContent, FolderNoteStyle, NoteLessFolders } from "./settings";
 
 export class FolderNoteMapSettingTab extends PluginSettingTab {
+    private indexFileSetting: Setting | null = null;
+
     constructor(app: App, private plugin: FolderNoteMapPlugin) {
         super(app, plugin);
     }
@@ -31,21 +33,25 @@ export class FolderNoteMapSettingTab extends PluginSettingTab {
                     .onChange(async (v) => {
                         s.folderNoteStyle = v as FolderNoteStyle;
                         await save();
-                        this.display(); // show or hide the index file name field
+                        // Toggle visibility of the index file setting dynamically without using display()
+                        if (this.indexFileSetting) {
+                            this.indexFileSetting.settingEl.toggle(s.folderNoteStyle === "index");
+                        }
                     })
             );
 
-        if (s.folderNoteStyle === "index") {
-            new Setting(containerEl)
-                .setName("Index file name")
-                .setDesc("Name of the folder note inside each folder, without the .md extension.")
-                .addText((t) =>
-                    t.setPlaceholder("Index").setValue(s.indexFileName).onChange(async (v) => {
-                        s.indexFileName = v;
-                        await save();
-                    })
-                );
-        }
+        this.indexFileSetting = new Setting(containerEl)
+            .setName("Index file name")
+            .setDesc("Name of the folder note inside each folder, without the .md extension.")
+            .addText((t) =>
+                t.setPlaceholder("Index").setValue(s.indexFileName).onChange(async (v) => {
+                    s.indexFileName = v;
+                    await save();
+                })
+            );
+
+        // Set initial visibility based on current style
+        this.indexFileSetting.settingEl.toggle(s.folderNoteStyle === "index");
 
         new Setting(containerEl)
             .setName("Mapping property")

@@ -19,9 +19,9 @@ export default class FolderNoteMapPlugin extends Plugin {
 			callback: () => void this.generate(),
 		});
 	}
-
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    const loaded = (await this.loadData()) as Partial<MapSettings>;
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, loaded);
 	}
 
 	async saveSettings() {
