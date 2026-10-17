@@ -9,6 +9,11 @@ export class FolderNoteMapSettingTab extends PluginSettingTab {
         super(app, plugin);
     }
 
+    // Adding this stub satisfies Obsidian 1.13.0+ settings search check
+    getSettingDefinitions() {
+        return [];
+    }
+
     display(): void {
         const { containerEl } = this;
         const s = this.plugin.settings;
@@ -33,7 +38,6 @@ export class FolderNoteMapSettingTab extends PluginSettingTab {
                     .onChange(async (v) => {
                         s.folderNoteStyle = v as FolderNoteStyle;
                         await save();
-                        // Toggle visibility of the index file setting dynamically without using display()
                         if (this.indexFileSetting) {
                             this.indexFileSetting.settingEl.toggle(s.folderNoteStyle === "index");
                         }
@@ -50,7 +54,6 @@ export class FolderNoteMapSettingTab extends PluginSettingTab {
                 })
             );
 
-        // Set initial visibility based on current style
         this.indexFileSetting.settingEl.toggle(s.folderNoteStyle === "index");
 
         new Setting(containerEl)
